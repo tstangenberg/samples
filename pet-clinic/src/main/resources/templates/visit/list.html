@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{visit.list.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{visit.list.headline}]]</h1>
+                <div>
+                    <a th:href="@{/visits/add}" class="btn btn-primary ms-2">[[#{visit.list.createNew}]]</a>
+                </div>
+            </div>
+            <div th:if="${visits.empty}">[[#{visit.list.empty}]]</div>
+            <div th:if="${!visits.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">[[#{visit.id.label}]]</th>
+                            <th scope="col">[[#{visit.visitDate.label}]]</th>
+                            <th scope="col">[[#{visit.description.label}]]</th>
+                            <th scope="col">[[#{visit.pet.label}]]</th>
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="visit : ${visits}">
+                            <td>[[${visit.id}]]</td>
+                            <td>[[${visit.visitDate}]]</td>
+                            <td>[[${visit.description}]]</td>
+                            <td>[[${visit.pet}]]</td>
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/visits/edit/{id}(id=${visit.id})}" class="btn btn-sm btn-secondary">[[#{visit.list.edit}]]</a>
+                                    <form th:action="@{/visits/delete/{id}(id=${visit.id})}"
+                                            th:data-confirm-message="#{delete.confirm}" method="post" class="js-submit-confirm d-inline">
+                                        <button type="submit" class="btn btn-sm btn-secondary">[[#{visit.list.delete}]]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
