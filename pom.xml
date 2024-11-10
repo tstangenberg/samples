@@ -34,5 +34,9 @@
 	<properties>
 		<java.version>23</java.version>
 	</properties>
+
+	<modules>
+		<module>pet-clinic</module>
+	</modules>
 	
 </project>
