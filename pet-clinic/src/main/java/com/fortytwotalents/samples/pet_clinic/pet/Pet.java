@@ -19,42 +19,35 @@ import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Entity
 @Table(name = "Pets")
 @Getter
 @Setter
 public class Pet {
 
-    @Id
-    @Column(nullable = false, updatable = false)
-    @SequenceGenerator(
-            name = "primary_sequence",
-            sequenceName = "primary_sequence",
-            allocationSize = 1,
-            initialValue = 10000
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "primary_sequence"
-    )
-    private Integer id;
+  @Id
+  @Column(nullable = false, updatable = false)
+  @SequenceGenerator(
+      name = "primary_sequence",
+      sequenceName = "primary_sequence",
+      allocationSize = 1,
+      initialValue = 10000)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "primary_sequence")
+  private Integer id;
 
-    @Column(length = 30)
-    private String name;
+  @Column(length = 30)
+  private String name;
 
-    @Column
-    private LocalDate birthDate;
+  @Column private LocalDate birthDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner_id")
-    private Owner owner;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "owner_id")
+  private Owner owner;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "type_id", nullable = false)
-    private Type type;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "type_id", nullable = false)
+  private Type type;
 
-    @OneToMany(mappedBy = "pet")
-    private Set<Visit> petVisits;
-
+  @OneToMany(mappedBy = "pet")
+  private Set<Visit> petVisits;
 }

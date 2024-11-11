@@ -5,10 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
 @Configuration
 @EntityScan("com.fortytwotalents.samples.pet_clinic")
 @EnableJpaRepositories("com.fortytwotalents.samples.pet_clinic")
 @EnableTransactionManagement
-public class DomainConfig {
-}
+public class DomainConfig {}

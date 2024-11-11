@@ -15,35 +15,27 @@ import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Entity
 @Table(name = "Visits")
 @Getter
 @Setter
 public class Visit {
 
-    @Id
-    @Column(nullable = false, updatable = false)
-    @SequenceGenerator(
-            name = "primary_sequence",
-            sequenceName = "primary_sequence",
-            allocationSize = 1,
-            initialValue = 10000
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "primary_sequence"
-    )
-    private Integer id;
+  @Id
+  @Column(nullable = false, updatable = false)
+  @SequenceGenerator(
+      name = "primary_sequence",
+      sequenceName = "primary_sequence",
+      allocationSize = 1,
+      initialValue = 10000)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "primary_sequence")
+  private Integer id;
 
-    @Column
-    private LocalDate visitDate;
+  @Column private LocalDate visitDate;
 
-    @Column
-    private String description;
+  @Column private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pet_id")
-    private Pet pet;
-
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "pet_id")
+  private Pet pet;
 }

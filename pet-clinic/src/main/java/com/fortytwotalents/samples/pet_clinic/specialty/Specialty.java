@@ -13,31 +13,25 @@ import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Entity
 @Table(name = "Specialties")
 @Getter
 @Setter
 public class Specialty {
 
-    @Id
-    @Column(nullable = false, updatable = false)
-    @SequenceGenerator(
-            name = "primary_sequence",
-            sequenceName = "primary_sequence",
-            allocationSize = 1,
-            initialValue = 10000
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "primary_sequence"
-    )
-    private Integer id;
+  @Id
+  @Column(nullable = false, updatable = false)
+  @SequenceGenerator(
+      name = "primary_sequence",
+      sequenceName = "primary_sequence",
+      allocationSize = 1,
+      initialValue = 10000)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "primary_sequence")
+  private Integer id;
 
-    @Column(length = 80)
-    private String name;
+  @Column(length = 80)
+  private String name;
 
-    @ManyToMany(mappedBy = "vetSpecialtySpecialties")
-    private Set<Vet> vetSpecialtyVets;
-
+  @ManyToMany(mappedBy = "vetSpecialtySpecialties")
+  private Set<Vet> vetSpecialtyVets;
 }

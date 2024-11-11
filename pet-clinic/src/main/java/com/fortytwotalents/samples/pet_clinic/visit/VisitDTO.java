@@ -5,18 +5,16 @@ import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 public class VisitDTO {
 
-    private Integer id;
+  private Integer id;
 
-    private LocalDate visitDate;
+  private LocalDate visitDate;
 
-    @Size(max = 255)
-    private String description;
+  @Size(max = 255)
+  private String description;
 
-    private Integer pet;
-
+  private Integer pet;
 }

@@ -4,14 +4,12 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 public class SpecialtyDTO {
 
-    private Integer id;
+  private Integer id;
 
-    @Size(max = 80)
-    private String name;
-
+  @Size(max = 80)
+  private String name;
 }

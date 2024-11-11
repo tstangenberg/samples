@@ -6,21 +6,18 @@ import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 public class PetDTO {
 
-    private Integer id;
+  private Integer id;
 
-    @Size(max = 30)
-    private String name;
+  @Size(max = 30)
+  private String name;
 
-    private LocalDate birthDate;
+  private LocalDate birthDate;
 
-    private Integer owner;
+  private Integer owner;
 
-    @NotNull
-    private Integer type;
-
+  @NotNull private Integer type;
 }
